@@ -16,12 +16,13 @@ export default function TodoList() {
     // console.log(...todos);
   };
 
-  const updatedTodo = (todoId, newValue) => {
-    if(!todo.text || /^\s*s/.test(todo.text)) {
-        return;
+  const updateTodo = (todoId, newValue) => {
+    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+      return;
     }
-    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
-  }
+
+    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+  };
 
   const removeTodo = (id) => {
     const removeArr = [...todos].filter((todo) => todo.id !== id);
